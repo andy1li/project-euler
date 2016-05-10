@@ -1,10 +1,10 @@
+
 # Project Euler
-'''```
+```
 My solutions to Project Euler in python
-```'''
 
 #1
-print sum(x for x in xrange(1, 1000) if x%3==0 or x%5==0)
+print '#1:', sum(x for x in xrange(1, 1000) if x%3==0 or x%5==0)
 
 #2
 def fib(stop):
@@ -17,7 +17,7 @@ def fib(stop):
 		b = c
 		c = a + b
 		
-print sum(x for x in fib(4000000) if x%2==0)
+print '#2:', sum(x for x in fib(4000000) if x%2==0)
 
 #3
 import math
@@ -36,7 +36,7 @@ def largest_prime_factor(n):
 		if n%x == 0 and is_prime(x):
 			return x
 
-print largest_prime_factor(600851475143)
+print '#3:', largest_prime_factor(600851475143)
 
 #4
 def is_palindrome(n):
@@ -47,26 +47,22 @@ def is_palindrome(n):
 	else:
 		return True
 
-print max(i*j for i in xrange(999, 0, -1) for j in xrange(999, 0, -1) if is_palindrome(i*j))
+print '#4:', max(i*j for i in xrange(1000) for j in xrange(1000) if is_palindrome(i*j))
 
 #5
-def is_evenly_divisible(n, to):
-	for x in range(2, to+1):
-		#print x, n/x, n%x
-		if n%x != 0:
-			return False
-	else:
-		return True
+from fractions import gcd
 
-# first try is_evenly_divisible(2520*11*13*17*19, 20)
-# fail case: divided by 16 equals 8, so multiple by 2 and try again
-print is_evenly_divisible(2520*11*13*17*19*2, 20)
+def lcm(a, b):
+    return (a * b) // gcd(a, b)
+
+print '#5:', reduce(lcm, xrange(1, 21))
+
 
 #6
 def solve_6(n):
 	return sum(xrange(1, n+1))**2 - sum(x*x for x in xrange(1, n+1))
 	
-print solve_6(100)
+print '#6:', solve_6(100)
 
 #7
 def nth_prime(stop):
@@ -79,6 +75,9 @@ def nth_prime(stop):
 			#print i, n
 	return i
 	
-print nth_prime(10001)
+print '#7:', nth_prime(10001)
+
+```
+
 
 
