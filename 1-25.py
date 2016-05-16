@@ -337,11 +337,29 @@ def collatz_steps(n):
 
 collatz_seq = ((i, collatz_steps(i)) for i in xrange(1, 1000000))
 
-print '#14:', max(collatz_seq, key=lambda x: x[1])[0]
+print '#14:', max(collatz_seq, key=lambda x: x[1])
 '''
 
 #15
+mem = {}
 
-print '#15:'
+def lattice(x, y):
+	if mem.get((x, y)):
+		return mem.get((x, y))
+
+	if x == 0 or y == 0:
+		return 1
+
+	mem[x, y] = lattice(x-1, y) + lattice(x, y-1)
+	return mem[x, y]
+
+
+print '#15:', lattice(20, 20)
+
+
+#16
+
+print '#16:'
+
 
 

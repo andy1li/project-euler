@@ -339,5 +339,5 @@ def collatz_steps(n):
 
 collatz_seq = ((i, collatz_steps(i)) for i in xrange(1, 1000000))
 
-print '#14:', max(collatz_seq, key=lambda x: x[1])[0]
+print '#14:', max(collatz_seq, key=lambda x: x[1])
 ```
