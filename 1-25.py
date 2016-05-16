@@ -124,7 +124,6 @@ print '#10:', sum_primes(2000000)
 
 
 #11
-
 import numpy as np
 from itertools import imap as map, chain 
 
@@ -173,12 +172,43 @@ nested_products = map(product_four, all_directions)
 products        = chain.from_iterable(nested_products)
 
 print '#11:', max(products)
-'''
+
 
 #12
+#http://code.jasonbhill.com/sage/project-euler-problem-12/
+from itertools import chain, count
+from operator import mul
 
-print '#12:', 
+def num_divisors(n):
+	if n % 2 == 0: n = n/2
+	
+	result = {1:0}
+	possible_factors = chain([2], count(3, 2))
+	
+	while n != 1:
+		p = possible_factors.next()
+		while n % p == 0:
+			result[p] = result.get(p) + 1 if result.get(p) else 1
+			n /= p
 
+	return reduce(mul, [v+1 for v in result.values()])
 
+def triangular_index_for(stop):
+	i = 1
+	a, b = num_divisors(i), num_divisors(i+1)
+	while a*b < stop:
+		i += 1
+		a, b = b, num_divisors(i+1)
+		#print i, a, b
+		
+	return i
 
+a = triangular_index_for(500)
+triangular = a*(a + 1) / 2
+print '#12:', triangular
+'''
+
+#13
+
+print '#13:'
 
